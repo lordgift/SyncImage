@@ -3,27 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A66AA22526AFF3CA00733E15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22426AFF3CA00733E15 /* AppDelegate.swift */; };
 		A66AA22726AFF3CA00733E15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22626AFF3CA00733E15 /* SceneDelegate.swift */; };
-		A66AA22926AFF3CA00733E15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22826AFF3CA00733E15 /* ViewController.swift */; };
+		A66AA22926AFF3CA00733E15 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22826AFF3CA00733E15 /* GalleryViewController.swift */; };
 		A66AA22C26AFF3CA00733E15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66AA22A26AFF3CA00733E15 /* Main.storyboard */; };
 		A66AA22E26AFF3CC00733E15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A66AA22D26AFF3CC00733E15 /* Assets.xcassets */; };
 		A66AA23126AFF3CC00733E15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A66AA22F26AFF3CC00733E15 /* LaunchScreen.storyboard */; };
+		A66AA23B26B000E900733E15 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA23A26B000E900733E15 /* ThumbnailCell.swift */; };
+		A66AA23D26B0020300733E15 /* GalleryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA23C26B0020300733E15 /* GalleryVM.swift */; };
+		A66AA24426B005DC00733E15 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A66AA24326B005DC00733E15 /* Realm */; };
+		A66AA24626B005DC00733E15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A66AA24526B005DC00733E15 /* RealmSwift */; };
+		A66AA24926B0061000733E15 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A66AA24826B0061000733E15 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A66AA22126AFF3CA00733E15 /* SyncImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A66AA22426AFF3CA00733E15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A66AA22626AFF3CA00733E15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A66AA22826AFF3CA00733E15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A66AA22826AFF3CA00733E15 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		A66AA22B26AFF3CA00733E15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A66AA22D26AFF3CC00733E15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A66AA23026AFF3CC00733E15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A66AA23226AFF3CC00733E15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A66AA23A26B000E900733E15 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
+		A66AA23C26B0020300733E15 /* GalleryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A66AA24926B0061000733E15 /* Alamofire in Frameworks */,
+				A66AA24626B005DC00733E15 /* RealmSwift in Frameworks */,
+				A66AA24426B005DC00733E15 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +66,41 @@
 		A66AA22326AFF3CA00733E15 /* SyncImage */ = {
 			isa = PBXGroup;
 			children = (
+				A66AA23926B0006300733E15 /* View */,
+				A66AA24126B004EA00733E15 /* Repository */,
 				A66AA22426AFF3CA00733E15 /* AppDelegate.swift */,
 				A66AA22626AFF3CA00733E15 /* SceneDelegate.swift */,
-				A66AA22826AFF3CA00733E15 /* ViewController.swift */,
 				A66AA22A26AFF3CA00733E15 /* Main.storyboard */,
 				A66AA22D26AFF3CC00733E15 /* Assets.xcassets */,
 				A66AA22F26AFF3CC00733E15 /* LaunchScreen.storyboard */,
 				A66AA23226AFF3CC00733E15 /* Info.plist */,
 			);
 			path = SyncImage;
+			sourceTree = "<group>";
+		};
+		A66AA23926B0006300733E15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A66AA24026B0024900733E15 /* Cell */,
+				A66AA22826AFF3CA00733E15 /* GalleryViewController.swift */,
+				A66AA23C26B0020300733E15 /* GalleryVM.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A66AA24026B0024900733E15 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A66AA23A26B000E900733E15 /* ThumbnailCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A66AA24126B004EA00733E15 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +119,11 @@
 			dependencies = (
 			);
 			name = SyncImage;
+			packageProductDependencies = (
+				A66AA24326B005DC00733E15 /* Realm */,
+				A66AA24526B005DC00733E15 /* RealmSwift */,
+				A66AA24826B0061000733E15 /* Alamofire */,
+			);
 			productName = SyncImage;
 			productReference = A66AA22126AFF3CA00733E15 /* SyncImage.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +151,10 @@
 				Base,
 			);
 			mainGroup = A66AA21826AFF3C900733E15;
+			packageReferences = (
+				A66AA24226B005DC00733E15 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				A66AA24726B0061000733E15 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = A66AA22226AFF3CA00733E15 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +182,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A66AA22926AFF3CA00733E15 /* ViewController.swift in Sources */,
+				A66AA22926AFF3CA00733E15 /* GalleryViewController.swift in Sources */,
+				A66AA23D26B0020300733E15 /* GalleryVM.swift in Sources */,
 				A66AA22526AFF3CA00733E15 /* AppDelegate.swift in Sources */,
+				A66AA23B26B000E900733E15 /* ThumbnailCell.swift in Sources */,
 				A66AA22726AFF3CA00733E15 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +388,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A66AA24226B005DC00733E15 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.11.0;
+			};
+		};
+		A66AA24726B0061000733E15 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A66AA24326B005DC00733E15 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A66AA24226B005DC00733E15 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		A66AA24526B005DC00733E15 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A66AA24226B005DC00733E15 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		A66AA24826B0061000733E15 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A66AA24726B0061000733E15 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A66AA21926AFF3C900733E15 /* Project object */;
 }

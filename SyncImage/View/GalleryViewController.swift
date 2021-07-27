@@ -7,8 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GalleryViewController: UIViewController {
 
+    @IBOutlet var collectionView: UICollectionView!
+    
+    lazy var viewModel: GalleryVM = {
+        return GalleryVM()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
