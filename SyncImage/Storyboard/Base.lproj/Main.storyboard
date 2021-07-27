@@ -68,7 +68,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tfm-dx-Wwf">
-                        <barButtonItem key="rightBarButtonItem" image="qrcode" catalog="system" id="sAO-uC-MIe"/>
+                        <barButtonItem key="rightBarButtonItem" image="qrcode" catalog="system" id="sAO-uC-MIe">
+                            <connections>
+                                <action selector="handleTapQR:" destination="BYZ-38-t0r" id="1tg-M6-VNX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="bh9-MG-yEA" id="67k-lI-2eR"/>
