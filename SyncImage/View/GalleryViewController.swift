@@ -41,18 +41,24 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let image = info[.editedImage] as? UIImage else {
+        guard let image = info[.originalImage] as? UIImage else {
             return
         }
-
-        do {
-            if let data = image.pngData() {
-                let filename = getDocumentsDirectory().appendingPathComponent("image.png")
-                try? data.write(to: filename)
-                
-                dismiss(animated: true, completion: nil)
-            }
+        
+        var resizedImage = image
+        print("\(Double(resizedImage.pngData()!.count)) Bytes")
+        while resizedImage.pngData()!.count > 1_000_000 {
+            resizedImage = resizedImage.resized(withPercentage: 0.9)!
+            print("resized \(Double(resizedImage.pngData()!.count)) Bytes")
         }
+        
+        if let data = resizedImage.pngData() {
+            let filename = getDocumentsDirectory().appendingPathComponent("image.png")
+            try? data.write(to: filename)
+            
+            dismiss(animated: true, completion: nil)
+        }
+        
         dismiss(animated: true, completion: nil)
     }
 
