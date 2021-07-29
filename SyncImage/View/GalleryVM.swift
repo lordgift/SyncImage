@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import UIKit
 
 class GalleryVM {
-    
+    var selectedImage:UIImage?
 }
