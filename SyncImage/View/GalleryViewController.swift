@@ -34,6 +34,8 @@ class GalleryViewController: UIViewController {
         }
     }
     
+    @IBAction func handleTapSync(_ sender: UIBarButtonItem) {
+    }
 }
 
 extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -60,9 +62,7 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
             try? data.write(to: filename)
             
             let picData = PicData(path: browseName)
-            try! self.viewModel.localRealm?.write {
-                self.viewModel.localRealm?.add(picData)
-            }
+            self.viewModel.savePicData(picData: picData)
             
             self.collectionView.reloadData()
             
@@ -84,12 +84,10 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
-        let picData = self.viewModel.localRealm?.objects(PicData.self)
-        
-        if picData!.count > 0 {
-            cell.setCell(picData: picData![indexPath.row])
+        let picData = self.viewModel.getPicData(index: indexPath.row)
+        if picData != nil {
+            cell.setCell(picData: picData!)
         }
-
         return cell
     }
     

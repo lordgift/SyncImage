@@ -110,11 +110,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tfm-dx-Wwf">
-                        <barButtonItem key="rightBarButtonItem" image="qrcode" catalog="system" id="sAO-uC-MIe">
-                            <connections>
-                                <action selector="handleTapQR:" destination="BYZ-38-t0r" id="1tg-M6-VNX"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="icloud.and.arrow.up.fill" catalog="system" id="cT9-MS-8ez">
+                                <connections>
+                                    <action selector="handleTapSync:" destination="BYZ-38-t0r" id="jAC-Qx-PsC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="qrcode" catalog="system" id="sAO-uC-MIe">
+                                <connections>
+                                    <action selector="handleTapQR:" destination="BYZ-38-t0r" id="1tg-M6-VNX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="bh9-MG-yEA" id="67k-lI-2eR"/>
@@ -144,6 +151,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icloud.and.arrow.up.fill" catalog="system" width="128" height="106"/>
         <image name="icloud.slash" catalog="system" width="128" height="101"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
