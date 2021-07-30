@@ -7,19 +7,20 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 
 class GalleryVM {
-    var selectedImage:UIImage?
-    var localRealm:Realm?
+    
+    var local = Local()
+    
+    func countPicData() -> Int {
+        return local.getAllPicData()?.count ?? 0
+    }
     
     func getPicData(index: Int) -> PicData? {
-        return localRealm?.objects(PicData.self)[index]
+        local.getPicData(index: index)
     }
     
     func savePicData(picData: PicData) {
-        try! self.localRealm?.write {
-            self.localRealm?.add(picData)
-        }
+        local.savePicData(picData: picData)
     }
 }

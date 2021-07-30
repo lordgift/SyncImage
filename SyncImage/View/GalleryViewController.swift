@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import RealmSwift
 
 class GalleryViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
-    var localRealm:Realm?
     
     lazy var viewModel: GalleryVM = {
         return GalleryVM()
@@ -21,7 +19,7 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.viewModel.localRealm = try! Realm()
+        
     }
     
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
@@ -78,8 +76,7 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
 
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let picData = self.viewModel.localRealm?.objects(PicData.self)
-        return picData!.count
+        self.viewModel.countPicData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
