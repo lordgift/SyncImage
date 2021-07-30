@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GalleryViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
+    var localRealm:Realm?
     
     lazy var viewModel: GalleryVM = {
         return GalleryVM()
@@ -19,6 +21,10 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.viewModel.localRealm = try! Realm()
+        try! self.viewModel.localRealm?.write {
+            self.viewModel.localRealm?.deleteAll()
+        }
     }
     
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
@@ -35,14 +41,8 @@ class GalleryViewController: UIViewController {
 
 extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let image = info[.originalImage] as? UIImage else {
+        guard let image = info[.editedImage] as? UIImage else {
             return
         }
         
@@ -54,12 +54,21 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
         }
         
         if let data = resizedImage.pngData() {
-            let filename = getDocumentsDirectory().appendingPathComponent("image.png")
+            let browseName = (info[.imageURL] as? URL)!.lastPathComponent
+            
+            
+            let filename = Util.getDocumentsDirectory().appendingPathComponent(browseName)
             try? data.write(to: filename)
+            
+            let picData = PicData(path: browseName)
+            try! self.viewModel.localRealm?.write {
+                self.viewModel.localRealm?.add(picData)
+            }
+            
+            self.collectionView.reloadData()
             
             dismiss(animated: true, completion: nil)
         }
-        
         dismiss(animated: true, completion: nil)
     }
 
@@ -70,14 +79,18 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
 
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        let picData = self.viewModel.localRealm?.objects(PicData.self)
+        return picData!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
+        let picData = self.viewModel.localRealm?.objects(PicData.self)
         
-        
-        
+        if picData!.count > 0 {
+            cell.setCell(picData: picData![indexPath.row])
+        }
+
         return cell
     }
     

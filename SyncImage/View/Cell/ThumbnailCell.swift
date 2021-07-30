@@ -11,4 +11,13 @@ class ThumbnailCell: UICollectionViewCell {
     
     @IBOutlet var thumbnailImageView: UIImageView!
     @IBOutlet var syncIconImageView: UIImageView!
+    
+    func setCell(picData: PicData) {
+        let imageURL = Util.getDocumentsDirectory().appendingPathComponent(picData.path!)
+        let image    = UIImage(contentsOfFile: imageURL.path)
+        self.thumbnailImageView.image = image
+        
+    }
+
+    
 }

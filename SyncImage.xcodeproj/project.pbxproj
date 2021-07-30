@@ -19,6 +19,8 @@
 		A66AA24626B005DC00733E15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A66AA24526B005DC00733E15 /* RealmSwift */; };
 		A66AA24926B0061000733E15 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A66AA24826B0061000733E15 /* Alamofire */; };
 		A66AA24D26B00C1F00733E15 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA24C26B00C1F00733E15 /* UIImage+.swift */; };
+		A6E0AF3E26B42D6200EC7F31 /* PicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0AF3D26B42D6200EC7F31 /* PicData.swift */; };
+		A6E0AF4026B436BC00EC7F31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0AF3F26B436BC00EC7F31 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		A66AA23A26B000E900733E15 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 		A66AA23C26B0020300733E15 /* GalleryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVM.swift; sourceTree = "<group>"; };
 		A66AA24C26B00C1F00733E15 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		A6E0AF3D26B42D6200EC7F31 /* PicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicData.swift; sourceTree = "<group>"; };
+		A6E0AF3F26B436BC00EC7F31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +72,10 @@
 		A66AA22326AFF3CA00733E15 /* SyncImage */ = {
 			isa = PBXGroup;
 			children = (
+				A6E0AF3B26B42D4F00EC7F31 /* Repository */,
 				A66AA24B26B00C1000733E15 /* Utils */,
 				A66AA24A26B0072900733E15 /* Storyboard */,
 				A66AA23926B0006300733E15 /* View */,
-				A66AA24126B004EA00733E15 /* Repository */,
 				A66AA22426AFF3CA00733E15 /* AppDelegate.swift */,
 				A66AA22626AFF3CA00733E15 /* SceneDelegate.swift */,
 				A66AA22D26AFF3CC00733E15 /* Assets.xcassets */,
@@ -99,13 +103,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		A66AA24126B004EA00733E15 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		A66AA24A26B0072900733E15 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +115,25 @@
 			isa = PBXGroup;
 			children = (
 				A66AA24C26B00C1F00733E15 /* UIImage+.swift */,
+				A6E0AF3F26B436BC00EC7F31 /* Util.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A6E0AF3B26B42D4F00EC7F31 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A6E0AF3C26B42D5700EC7F31 /* Model */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A6E0AF3C26B42D5700EC7F31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A6E0AF3D26B42D6200EC7F31 /* PicData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,8 +219,10 @@
 				A66AA23D26B0020300733E15 /* GalleryVM.swift in Sources */,
 				A66AA22526AFF3CA00733E15 /* AppDelegate.swift in Sources */,
 				A66AA24D26B00C1F00733E15 /* UIImage+.swift in Sources */,
+				A6E0AF4026B436BC00EC7F31 /* Util.swift in Sources */,
 				A66AA23B26B000E900733E15 /* ThumbnailCell.swift in Sources */,
 				A66AA22726AFF3CA00733E15 /* SceneDelegate.swift in Sources */,
+				A6E0AF3E26B42D6200EC7F31 /* PicData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
