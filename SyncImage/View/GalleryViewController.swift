@@ -17,7 +17,8 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
     }
     
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
@@ -65,4 +66,20 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath)
+        
+        
+        
+        return cell
+    }
+    
+    
 }

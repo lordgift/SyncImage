@@ -9,4 +9,6 @@ import UIKit
 
 class ThumbnailCell: UICollectionViewCell {
     
+    @IBOutlet var thumbnailImageView: UIImageView!
+    @IBOutlet var syncIconImageView: UIImageView!
 }
