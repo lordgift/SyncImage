@@ -22,9 +22,6 @@ class GalleryViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.viewModel.localRealm = try! Realm()
-        try! self.viewModel.localRealm?.write {
-            self.viewModel.localRealm?.deleteAll()
-        }
     }
     
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
@@ -95,6 +92,5 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
 
         return cell
     }
-    
     
 }
