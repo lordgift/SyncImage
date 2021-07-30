@@ -9,11 +9,11 @@ import RealmSwift
 
 class PicData: Object {
     
-    @Persisted var path: String?
+    @Persisted var name: String?
     @Persisted var isSynced: Bool = false
     
     convenience init(path: String) {
         self.init()
-        self.path = path
+        self.name = path
     }
 }

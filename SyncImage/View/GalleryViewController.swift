@@ -58,6 +58,8 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
             
             
             let filename = Util.getDocumentsDirectory().appendingPathComponent(browseName)
+            print("Absolute Path : \(filename)")
+            
             try? data.write(to: filename)
             
             let picData = PicData(path: browseName)
