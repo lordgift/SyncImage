@@ -12,7 +12,8 @@ class Local {
     var realm:Realm?
     
     init() {
-        realm = try! Realm()
+        let realmConfig = Realm.Configuration(schemaVersion: 2)
+        realm = try! Realm(configuration: realmConfig)
     }
     
     func getAllPicData() -> Results<PicData>? {
@@ -24,7 +25,11 @@ class Local {
     }
     
     func getPicData(isSynced: Bool) -> [PicData]? {
-        return realm?.objects(PicData.self).filter("isSynced = %@", isSynced).toArray(ofType: PicData.self)
+        if isSynced {
+            return realm?.objects(PicData.self).filter("timestamp != nil").toArray(ofType: PicData.self)
+        } else {
+            return realm?.objects(PicData.self).filter("timestamp == nil").toArray(ofType: PicData.self)
+        }
     }
     
     func savePicData(picData: PicData) {
@@ -32,4 +37,14 @@ class Local {
             self.realm?.add(picData)
         }
     }
+    
+    func updatePicData(picData: PicData) {
+        let modifyingPicData = realm?.objects(PicData.self).filter("name = %@", picData.name!).first
+        try! self.realm?.write {
+            modifyingPicData?.timestamp = picData.timestamp
+//        try! self.realm?.write {
+//            self.realm?.add(modifyingPicData!, update: .modified)
+        }
+    }
+    
 }

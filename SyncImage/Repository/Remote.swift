@@ -10,7 +10,7 @@ import UIKit
 
 class Remote {
 
-    func upload(picDataList: [PicData], onSuccess: (([String: Any])->Void)?) {
+    func upload(picDataList: [PicData], onSuccess: ((String, String)->Void)?) {
 
         let url = URL(string: "http://localhost:8080/upload")!
 
@@ -30,9 +30,9 @@ class Remote {
                     if let json = value as? [String: Any] {
                         let filename = json["filename"] as! String
                         let timestamp = json["timestamp"] as! String
-                        print("\(filename) >>> \(timestamp)")
+                        onSuccess?(filename, timestamp)
                     }
-//                    onSuccess(data as! [String:String])
+                    
                 case .failure(let error):
                     print(error)
                     

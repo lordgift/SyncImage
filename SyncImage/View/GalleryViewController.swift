@@ -38,9 +38,12 @@ class GalleryViewController: UIViewController {
 //        print(noSync?.count)
         
         
-        self.viewModel.sync()
+        self.viewModel.sync {
+            self.collectionView.reloadData()
+        }
         
     }
+    
 }
 
 extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -66,7 +69,7 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
             
             try? data.write(to: filename)
             
-            let picData = PicData(path: browseName)
+            let picData = PicData(name: browseName, timestamp: nil)
             self.viewModel.savePicData(picData: picData)
             
             self.collectionView.reloadData()
