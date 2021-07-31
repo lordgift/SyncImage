@@ -41,27 +41,32 @@
                                                         <constraint firstAttribute="height" constant="80" id="QQ2-kA-Aop"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icloud.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G7f-M0-a8W">
-                                                    <rect key="frame" x="56" y="57" width="16" height="15"/>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUk-K8-4vm">
+                                                    <rect key="frame" x="48" y="50" width="24" height="22"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="D9b-Ds-LIu"/>
-                                                        <constraint firstAttribute="width" constant="16" id="I6Q-LB-iRL"/>
+                                                        <constraint firstAttribute="height" constant="22" id="Xa2-pw-BK4"/>
+                                                        <constraint firstAttribute="width" constant="24" id="fB6-87-SQr"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="icloud.slash" catalog="system"/>
+                                                    <state key="highlighted" image="icloud.fill" catalog="system"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="6uA-NO-0in" secondAttribute="trailing" id="9AO-1x-Y2Y"/>
                                                 <constraint firstAttribute="bottom" secondItem="6uA-NO-0in" secondAttribute="bottom" id="EQb-zr-9R4"/>
                                                 <constraint firstItem="6uA-NO-0in" firstAttribute="leading" secondItem="T6t-7Q-Low" secondAttribute="leading" id="Gqh-az-Wu8"/>
-                                                <constraint firstAttribute="bottom" secondItem="G7f-M0-a8W" secondAttribute="bottom" constant="8" id="RfO-9G-3Qd"/>
-                                                <constraint firstAttribute="trailing" secondItem="G7f-M0-a8W" secondAttribute="trailing" constant="8" id="dKK-kT-mg7"/>
+                                                <constraint firstAttribute="trailing" secondItem="gUk-K8-4vm" secondAttribute="trailing" constant="8" id="HkL-yL-eRK"/>
+                                                <constraint firstAttribute="bottom" secondItem="gUk-K8-4vm" secondAttribute="bottom" constant="8" id="U0b-wB-9my"/>
                                                 <constraint firstItem="6uA-NO-0in" firstAttribute="top" secondItem="T6t-7Q-Low" secondAttribute="top" id="fA3-65-ho4"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="80" height="80"/>
                                         <connections>
-                                            <outlet property="syncIconImageView" destination="G7f-M0-a8W" id="Nry-wB-FeM"/>
+                                            <outlet property="syncIconButton" destination="gUk-K8-4vm" id="zB2-Pc-a5O"/>
                                             <outlet property="thumbnailImageView" destination="6uA-NO-0in" id="fEJ-3F-7yL"/>
                                         </connections>
                                     </collectionViewCell>
@@ -152,6 +157,7 @@
     </scenes>
     <resources>
         <image name="icloud.and.arrow.up.fill" catalog="system" width="128" height="106"/>
+        <image name="icloud.fill" catalog="system" width="128" height="88"/>
         <image name="icloud.slash" catalog="system" width="128" height="101"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">

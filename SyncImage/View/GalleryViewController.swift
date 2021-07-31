@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class GalleryViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class GalleryViewController: UIViewController {
             pickerVC.delegate = self
             pickerVC.sourceType = .photoLibrary
             pickerVC.allowsEditing = true
+            pickerVC.mediaTypes = [String(kUTTypeImage)]
             self.present(pickerVC, animated: true, completion: nil)
         }
     }

@@ -10,14 +10,13 @@ import UIKit
 class ThumbnailCell: UICollectionViewCell {
     
     @IBOutlet var thumbnailImageView: UIImageView!
-    @IBOutlet var syncIconImageView: UIImageView!
+    @IBOutlet var syncIconButton: UIButton!
     
     func setCell(picData: PicData) {
         let imageURL = Util.getDocumentsDirectory().appendingPathComponent(picData.name!)
         let image    = UIImage(contentsOfFile: imageURL.path)
         self.thumbnailImageView.image = image
-        
+        self.syncIconButton.isHighlighted =  picData.timestamp != nil
     }
 
-    
 }
