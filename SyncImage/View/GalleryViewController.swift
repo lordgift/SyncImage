@@ -33,6 +33,13 @@ class GalleryViewController: UIViewController {
     }
     
     @IBAction func handleTapSync(_ sender: UIBarButtonItem) {
+        
+//        let noSync = self.viewModel.getPicDataNoSync()
+//        print(noSync?.count)
+        
+        
+        self.viewModel.sync()
+        
     }
 }
 

@@ -23,6 +23,10 @@ class Local {
         return realm?.objects(PicData.self)[index]
     }
     
+    func getPicData(isSynced: Bool) -> [PicData]? {
+        return realm?.objects(PicData.self).filter("isSynced = %@", isSynced).toArray(ofType: PicData.self)
+    }
+    
     func savePicData(picData: PicData) {
         try! self.realm?.write {
             self.realm?.add(picData)

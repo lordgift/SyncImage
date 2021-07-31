@@ -23,6 +23,7 @@
 		A6E0AF4026B436BC00EC7F31 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0AF3F26B436BC00EC7F31 /* Util.swift */; };
 		A6F61BFF26B44D410048E87E /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F61BFE26B44D410048E87E /* Remote.swift */; };
 		A6F61C0126B44D7F0048E87E /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F61C0026B44D7F0048E87E /* Local.swift */; };
+		A6F61C0326B453CF0048E87E /* RealmResults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F61C0226B453CF0048E87E /* RealmResults+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A6E0AF3F26B436BC00EC7F31 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		A6F61BFE26B44D410048E87E /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		A6F61C0026B44D7F0048E87E /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
+		A6F61C0226B453CF0048E87E /* RealmResults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmResults+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				A66AA24C26B00C1F00733E15 /* UIImage+.swift */,
 				A6E0AF3F26B436BC00EC7F31 /* Util.swift */,
+				A6F61C0226B453CF0048E87E /* RealmResults+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				A66AA22526AFF3CA00733E15 /* AppDelegate.swift in Sources */,
 				A66AA24D26B00C1F00733E15 /* UIImage+.swift in Sources */,
 				A6E0AF4026B436BC00EC7F31 /* Util.swift in Sources */,
+				A6F61C0326B453CF0048E87E /* RealmResults+.swift in Sources */,
 				A66AA23B26B000E900733E15 /* ThumbnailCell.swift in Sources */,
 				A66AA22726AFF3CA00733E15 /* SceneDelegate.swift in Sources */,
 				A6E0AF3E26B42D6200EC7F31 /* PicData.swift in Sources */,
