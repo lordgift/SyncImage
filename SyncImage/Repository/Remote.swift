@@ -9,9 +9,13 @@ import Alamofire
 import UIKit
 
 class Remote {
-
+    
+    func isConnectedToInternet() -> Bool {
+        return NetworkReachabilityManager()?.isReachable ?? false
+    }
+    
     func upload(picDataList: [PicData], onSuccess: ((String, String)->Void)?) {
-
+        
         let url = URL(string: "http://localhost:8080/upload")!
 
         for picData in picDataList {

@@ -29,12 +29,18 @@ class GalleryVM {
         local.savePicData(picData: picData)
     }
     
-    func sync(onComplete:@escaping ()->Void) {
-        let noSync = self.getPicDataNoSync()
-        remote.upload(picDataList: noSync!) { filename, timestamp in
-            let picData = PicData(name: filename, timestamp: timestamp)
-            self.local.updatePicData(picData: picData)
-            onComplete()
+    func sync(onComplete:@escaping ()->Void, onNotConnected:()->Void) {
+        
+        if (!remote.isConnectedToInternet()) {
+            onNotConnected()
+        } else {
+            let noSync = self.getPicDataNoSync()
+            remote.upload(picDataList: noSync!) { filename, timestamp in
+                let picData = PicData(name: filename, timestamp: timestamp)
+                self.local.updatePicData(picData: picData)
+                onComplete()
+            }
         }
+        
     }
 }

@@ -35,15 +35,13 @@ class GalleryViewController: UIViewController {
     }
     
     @IBAction func handleTapSync(_ sender: UIBarButtonItem) {
-        
-//        let noSync = self.viewModel.getPicDataNoSync()
-//        print(noSync?.count)
-        
-        
         self.viewModel.sync {
             self.collectionView.reloadData()
+        } onNotConnected: {
+            let alert = UIAlertController(title: "Unreachable Internet, please try again.", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
 }
