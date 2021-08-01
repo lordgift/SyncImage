@@ -26,11 +26,15 @@ class LimitSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let limit = self.viewModel.getLimit()
+        self.pngLimitTextField.text = String(limit!.png!)
+        self.jpgLimitTextField.text = String(limit!.jpg!)
+        self.heicLimitTextField.text = String(limit!.heic!)
     }
     
     @IBAction func handleTapSave(_ sender: Any) {
+        
         let limit = Limit()
         limit.png = Int(self.pngLimitTextField.text ?? "0") ?? 0
         limit.jpg = Int(self.jpgLimitTextField.text ?? "0") ?? 0
