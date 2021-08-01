@@ -49,7 +49,7 @@ class GalleryViewController: UIViewController {
         self.viewModel.sync {
             self.collectionView.reloadData()
         } onNotConnected: {
-            let alert = UIAlertController(title: "Unreachable Internet, please try again.", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Can't upload!", message: "Unreachable Internet, please try again.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

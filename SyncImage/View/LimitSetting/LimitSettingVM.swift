@@ -8,6 +8,9 @@
 import Foundation
 
 class LimitSettingVM {
+    
+    var editingLimit:Limit?
+    
     private var local = Local()
     
     func setLimit(limit: Limit) {
@@ -15,7 +18,11 @@ class LimitSettingVM {
     }
     
     func getLimit() -> Limit? {
-        return local.getLimit()
+        let limit = local.getLimit()
+        self.editingLimit?.png = limit?.png
+        self.editingLimit?.jpg = limit?.jpg
+        self.editingLimit?.heic = limit?.heic
+        return limit
     }
     
 }
