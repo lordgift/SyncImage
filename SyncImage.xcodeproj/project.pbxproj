@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6245F9226B6558B006F7879 /* LimitSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6245F9126B6558B006F7879 /* LimitSettingViewController.swift */; };
 		A66AA22526AFF3CA00733E15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22426AFF3CA00733E15 /* AppDelegate.swift */; };
 		A66AA22726AFF3CA00733E15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22626AFF3CA00733E15 /* SceneDelegate.swift */; };
 		A66AA22926AFF3CA00733E15 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66AA22826AFF3CA00733E15 /* GalleryViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6245F9126B6558B006F7879 /* LimitSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitSettingViewController.swift; sourceTree = "<group>"; };
 		A66AA22126AFF3CA00733E15 /* SyncImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A66AA22426AFF3CA00733E15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A66AA22626AFF3CA00733E15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6245F8F26B65556006F7879 /* LimitSetting */ = {
+			isa = PBXGroup;
+			children = (
+				A6245F9126B6558B006F7879 /* LimitSettingViewController.swift */,
+			);
+			path = LimitSetting;
+			sourceTree = "<group>";
+		};
+		A6245F9026B65566006F7879 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				A66AA24026B0024900733E15 /* Cell */,
+				A66AA22826AFF3CA00733E15 /* GalleryViewController.swift */,
+				A66AA23C26B0020300733E15 /* GalleryVM.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
 		A66AA21826AFF3C900733E15 = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +114,8 @@
 		A66AA23926B0006300733E15 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A66AA24026B0024900733E15 /* Cell */,
-				A66AA22826AFF3CA00733E15 /* GalleryViewController.swift */,
-				A66AA23C26B0020300733E15 /* GalleryVM.swift */,
+				A6245F9026B65566006F7879 /* Gallery */,
+				A6245F8F26B65556006F7879 /* LimitSetting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,6 +245,7 @@
 			files = (
 				A66AA22926AFF3CA00733E15 /* GalleryViewController.swift in Sources */,
 				A6F61C0126B44D7F0048E87E /* Local.swift in Sources */,
+				A6245F9226B6558B006F7879 /* LimitSettingViewController.swift in Sources */,
 				A66AA23D26B0020300733E15 /* GalleryVM.swift in Sources */,
 				A6F61BFF26B44D410048E87E /* Remote.swift in Sources */,
 				A66AA22526AFF3CA00733E15 /* AppDelegate.swift in Sources */,

@@ -49,9 +49,6 @@ class GalleryViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    @IBAction func handleTapOfflineLimitSetting(_ sender: UIButton) {
-    }
 }
 
 extension GalleryViewController: UIDocumentPickerDelegate {
