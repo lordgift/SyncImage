@@ -19,8 +19,6 @@ class GalleryViewController: UIViewController {
     @IBOutlet var heicAvailableLabel: UILabel!
     @IBOutlet var heicLimitLabel: UILabel!
     
-    
-    
     lazy var viewModel: GalleryVM = {
         return GalleryVM()
     }()
@@ -49,6 +47,23 @@ class GalleryViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func handleTapSettingLimit(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "settingLimitSegue", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settingLimitSegue" {
+            if let vc = segue.destination as? LimitSettingViewController {
+                vc.setupOnSave { pngLimit, jpgLimit, heicLimit in
+                    self.pngLimitLabel.text = String(pngLimit)
+                    self.jpgLimitLabel.text = String(jpgLimit)
+                    self.heicLimitLabel.text = String(heicLimit)
+                }
+            }
+        }
+    }
+    
 }
 
 extension GalleryViewController: UIDocumentPickerDelegate {

@@ -149,19 +149,19 @@
 		A6E0AF3B26B42D4F00EC7F31 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				A6E0AF3C26B42D5700EC7F31 /* Model */,
+				A6E0AF3C26B42D5700EC7F31 /* RealmModel */,
 				A6F61BFE26B44D410048E87E /* Remote.swift */,
 				A6F61C0026B44D7F0048E87E /* Local.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		A6E0AF3C26B42D5700EC7F31 /* Model */ = {
+		A6E0AF3C26B42D5700EC7F31 /* RealmModel */ = {
 			isa = PBXGroup;
 			children = (
 				A6E0AF3D26B42D6200EC7F31 /* PicData.swift */,
 			);
-			path = Model;
+			path = RealmModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
