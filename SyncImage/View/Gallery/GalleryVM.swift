@@ -10,11 +10,31 @@ import UIKit
 
 class GalleryVM {
     
+    var countPng:Int?
+    var countJpg:Int?
+    var countHeic:Int?
+    var limit: Limit?
+    
     private var local = Local()
     private var remote = Remote()
     
+    init() {
+        countAvailableAndLimit()
+    }
+    
+    func countAvailableAndLimit() {
+        self.countPng = self.countPicData(ext: "png")
+        self.countJpg = self.countPicData(ext: "jpg")
+        self.countHeic = self.countPicData(ext: "heic")
+        self.limit = self.getLimit()
+    }
+    
     func countPicData() -> Int {
         return local.getAllPicData()?.count ?? 0
+    }
+
+    func countPicData(ext:String) -> Int {
+        return local.getPicDataNoSync(ext: ext)?.count ?? 0
     }
     
     func getPicData(index: Int) -> PicData? {

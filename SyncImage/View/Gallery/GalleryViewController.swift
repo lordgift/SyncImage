@@ -31,11 +31,7 @@ class GalleryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let limit = self.viewModel.getLimit()
-        
-        self.pngLimitLabel.text = limit == nil ? "??" : String(limit!.png!)
-        self.jpgLimitLabel.text = limit == nil ? "??" : String(limit!.jpg!)
-        self.heicLimitLabel.text = limit == nil ? "??" : String(limit!.heic!)
+        self.reloadLimitData()
     }
     
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
@@ -43,7 +39,7 @@ class GalleryViewController: UIViewController {
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         
-        present(documentPicker, animated: true, completion: nil)
+        self.present(documentPicker, animated: true, completion: nil)
     }
     
     @IBAction func handleTapSync(_ sender: UIBarButtonItem) {
@@ -64,12 +60,23 @@ class GalleryViewController: UIViewController {
         if segue.identifier == "settingLimitSegue" {
             if let vc = segue.destination as? LimitSettingViewController {
                 vc.setupOnSave { limit in
-                    self.pngLimitLabel.text = String(limit.png!)
-                    self.jpgLimitLabel.text = String(limit.jpg!)
-                    self.heicLimitLabel.text = String(limit.heic!)
+                    self.viewModel.limit = limit
+                    //viewWillAppear will triggered!
                 }
             }
         }
+    }
+    
+    private func reloadLimitData() {
+        self.viewModel.countAvailableAndLimit()
+        
+        self.pngAvailableLabel.text = String(self.viewModel.countPng ?? 0)
+        self.jpgAvailableLabel.text = String(self.viewModel.countJpg ?? 0)
+        self.heicAvailableLabel.text = String(self.viewModel.countHeic ?? 0)
+        
+        self.pngLimitLabel.text = self.viewModel.limit == nil ? "??" : String(self.viewModel.limit!.png!)
+        self.jpgLimitLabel.text = self.viewModel.limit == nil ? "??" : String(self.viewModel.limit!.jpg!)
+        self.heicLimitLabel.text = self.viewModel.limit == nil ? "??" : String(self.viewModel.limit!.heic!)
     }
     
 }
@@ -100,6 +107,7 @@ extension GalleryViewController: UIDocumentPickerDelegate {
             self.viewModel.savePicData(picData: picData)
             
             self.collectionView.reloadData()
+            self.reloadLimitData()
             
             dismiss(animated: true, completion: nil)
         }

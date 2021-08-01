@@ -32,6 +32,10 @@ class Local {
         }
     }
     
+    func getPicDataNoSync(ext: String) -> Results<PicData>? {
+        return realm?.objects(PicData.self).filter("timestamp == nil && name like[c] %@", "*\(ext)")
+    }
+    
     func savePicData(picData: PicData) {
         try! self.realm?.write {
             self.realm?.add(picData)
