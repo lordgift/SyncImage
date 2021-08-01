@@ -47,4 +47,19 @@ class Local {
         }
     }
     
+    
+    func getLimit() -> Limit? {
+        return realm?.objects(Limit.self).first
+    }
+    
+    func setLimit(limit: Limit) {
+        let modifyingLimit = realm?.objects(Limit.self).first
+        try! self.realm?.write {
+            modifyingLimit?.png = limit.png
+            modifyingLimit?.jpg = limit.jpg
+            modifyingLimit?.heic = limit.heic
+        }
+        
+    }
+    
 }

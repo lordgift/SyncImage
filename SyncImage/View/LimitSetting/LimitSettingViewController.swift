@@ -30,6 +30,9 @@ class LimitSettingViewController: UIViewController {
         let jpgLimit = Int(self.jpgLimitTextField.text ?? "0") ?? 0
         let heicLimit = Int(self.heicLimitTextField.text ?? "0") ?? 0
         
+        l
+        
+        
         onSave?(pngLimit, jpgLimit, heicLimit)
         self.navigationController?.popViewController(animated: true)
     }
