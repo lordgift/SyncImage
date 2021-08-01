@@ -18,6 +18,8 @@ class GalleryViewController: UIViewController {
     @IBOutlet var jpgLimitLabel: UILabel!
     @IBOutlet var heicAvailableLabel: UILabel!
     @IBOutlet var heicLimitLabel: UILabel!
+    @IBOutlet var loadingView: UIView!
+    @IBOutlet var indicatorView: UIActivityIndicatorView!
     
     lazy var viewModel: GalleryVM = {
         return GalleryVM()
@@ -27,14 +29,15 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.reloadLimitData()
     }
     
-    @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
+    @IBAction func handleTapBrowse(_ sender: UIBarButtonItem) {
+        self.startLoading()
+        
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.png,.jpeg, .heic], asCopy: true)
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
@@ -79,6 +82,16 @@ class GalleryViewController: UIViewController {
         self.heicLimitLabel.text = self.viewModel.limit == nil ? "??" : String(self.viewModel.limit!.heic!)
     }
     
+    private func startLoading() {
+        self.loadingView.isHidden = false
+        self.indicatorView.startAnimating()
+    }
+    
+    private func stopLoading() {
+        self.loadingView.isHidden = true
+        self.indicatorView.stopAnimating()
+    }
+    
 }
 
 extension GalleryViewController: UIDocumentPickerDelegate {
@@ -91,24 +104,26 @@ extension GalleryViewController: UIDocumentPickerDelegate {
             if (self.viewModel.limit!.png! - self.viewModel.countPng!) < 1 {
                 let alert = UIAlertController(title: "Can't upload!", message: "Maximum PNG limit reached", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: stopLoading)
                 return
             }
         } else if urls.first!.pathExtension.uppercased() == "JPG" {
             if (self.viewModel.limit!.jpg! - self.viewModel.countJpg!) < 1 {
                 let alert = UIAlertController(title: "Can't upload!", message: "Maximum JPG limit reached", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: stopLoading)
                 return
             }
         } else if urls.first!.pathExtension.uppercased() == "HEIC" {
             if (self.viewModel.limit!.heic! - self.viewModel.countHeic!) < 1 {
                 let alert = UIAlertController(title: "Can't upload!", message: "Maximum HEIC limit reached", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: stopLoading)
                 return
             }
         }
+        
+        
         
         var resizedImage = image
         print("\(Double(resizedImage.pngData()!.count)) Bytes")
@@ -131,14 +146,13 @@ extension GalleryViewController: UIDocumentPickerDelegate {
             
             self.collectionView.reloadData()
             self.reloadLimitData()
-            
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: stopLoading)
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: stopLoading)
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: stopLoading)
     }
 }
 

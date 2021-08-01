@@ -277,15 +277,33 @@
                                     <constraint firstItem="6Vw-rc-VGH" firstAttribute="centerY" secondItem="Udg-hR-d9i" secondAttribute="centerY" id="vdV-SP-urE"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" id="8ty-xS-krv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3JK-Mh-guc">
+                                        <rect key="frame" x="188.5" y="368.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="3JK-Mh-guc" firstAttribute="centerY" secondItem="8ty-xS-krv" secondAttribute="centerY" id="JVd-4V-JTo"/>
+                                    <constraint firstItem="3JK-Mh-guc" firstAttribute="centerX" secondItem="8ty-xS-krv" secondAttribute="centerX" id="cbJ-GC-b18"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8ty-xS-krv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2UN-gU-ywE"/>
                             <constraint firstItem="bh9-MG-yEA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7dx-km-oNq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bh9-MG-yEA" secondAttribute="trailing" id="9GL-fT-OMQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yLv-dR-ex5" secondAttribute="bottom" id="Dnc-XO-8TF"/>
+                            <constraint firstItem="8ty-xS-krv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="O72-Ge-3kw"/>
+                            <constraint firstItem="8ty-xS-krv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QeH-TA-LIs"/>
                             <constraint firstItem="yLv-dR-ex5" firstAttribute="top" secondItem="bh9-MG-yEA" secondAttribute="bottom" id="VNO-JB-uNk"/>
                             <constraint firstItem="yLv-dR-ex5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XNl-Uy-yNi"/>
+                            <constraint firstItem="8ty-xS-krv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZoR-e3-5bX"/>
                             <constraint firstItem="bh9-MG-yEA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="f2R-TW-hug"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yLv-dR-ex5" secondAttribute="trailing" id="trv-42-2j9"/>
                         </constraints>
@@ -299,7 +317,7 @@
                             </barButtonItem>
                             <barButtonItem image="photo.on.rectangle.fill" catalog="system" id="sAO-uC-MIe">
                                 <connections>
-                                    <action selector="handleTapQR:" destination="BYZ-38-t0r" id="1tg-M6-VNX"/>
+                                    <action selector="handleTapBrowse:" destination="BYZ-38-t0r" id="1tg-M6-VNX"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -308,8 +326,10 @@
                         <outlet property="collectionView" destination="bh9-MG-yEA" id="67k-lI-2eR"/>
                         <outlet property="heicAvailableLabel" destination="myw-Rk-IxD" id="nB0-Sh-OPD"/>
                         <outlet property="heicLimitLabel" destination="IfT-0V-CVb" id="b3O-6T-dcr"/>
+                        <outlet property="indicatorView" destination="3JK-Mh-guc" id="ItW-V1-A2K"/>
                         <outlet property="jpgAvailableLabel" destination="f9C-kn-ZPj" id="NkR-m4-m0a"/>
                         <outlet property="jpgLimitLabel" destination="AOD-MI-nCI" id="CJc-Gp-jva"/>
+                        <outlet property="loadingView" destination="8ty-xS-krv" id="5oT-zL-pod"/>
                         <outlet property="pngAvailableLabel" destination="b6Y-Kj-jSb" id="yl7-P6-BST"/>
                         <outlet property="pngLimitLabel" destination="rqX-ah-gcY" id="CNr-ul-Rdj"/>
                         <segue destination="fyZ-B1-0ss" kind="show" identifier="settingLimitSegue" id="RfP-gT-bSh"/>
