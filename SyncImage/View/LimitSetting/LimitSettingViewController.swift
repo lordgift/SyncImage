@@ -40,8 +40,14 @@ class LimitSettingViewController: UIViewController {
         limit.jpg = Int(self.jpgLimitTextField.text ?? "0") ?? 0
         limit.heic = Int(self.heicLimitTextField.text ?? "0") ?? 0
         
-        viewModel.setLimit(limit: limit)
-        onSave?(limit)
-        self.navigationController?.popViewController(animated: true)
+        if limit.png! + limit.jpg! + limit.heic! < 100 {
+            let alert = UIAlertController(title: "Can't save!", message: "Summary all types not below 100", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.viewModel.setLimit(limit: limit)
+            self.onSave?(limit)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
