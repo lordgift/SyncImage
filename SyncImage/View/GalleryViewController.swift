@@ -24,14 +24,11 @@ class GalleryViewController: UIViewController {
     }
     
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let pickerVC = UIImagePickerController()
-            pickerVC.delegate = self
-            pickerVC.sourceType = .photoLibrary
-            pickerVC.allowsEditing = true
-            pickerVC.mediaTypes = [String(kUTTypeImage)]
-            self.present(pickerVC, animated: true, completion: nil)
-        }
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.png,.jpeg, .heic], asCopy: true)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        
+        present(documentPicker, animated: true, completion: nil)
     }
     
     @IBAction func handleTapSync(_ sender: UIBarButtonItem) {
@@ -46,22 +43,21 @@ class GalleryViewController: UIViewController {
     
 }
 
-extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let image = info[.editedImage] as? UIImage else {
+extension GalleryViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let image = UIImage(contentsOfFile: urls.first!.path) else {
             return
         }
         
         var resizedImage = image
         print("\(Double(resizedImage.pngData()!.count)) Bytes")
         while resizedImage.pngData()!.count > 1_000_000 {
-            resizedImage = resizedImage.resized(withPercentage: 0.9)!
+            resizedImage = resizedImage.resized(withPercentage: 0.8)!
             print("resized \(Double(resizedImage.pngData()!.count)) Bytes")
         }
         
         if let data = resizedImage.pngData() {
-            let browseName = (info[.imageURL] as? URL)!.lastPathComponent
+            let browseName = urls.first!.lastPathComponent
             
             
             let filename = Util.getDocumentsDirectory().appendingPathComponent(browseName)
@@ -78,11 +74,12 @@ extension GalleryViewController: UINavigationControllerDelegate, UIImagePickerCo
         }
         dismiss(animated: true, completion: nil)
     }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true, completion: nil)
     }
 }
+
 
 extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
