@@ -87,6 +87,29 @@ extension GalleryViewController: UIDocumentPickerDelegate {
             return
         }
         
+        if urls.first!.pathExtension.uppercased() == "PNG" {
+            if (self.viewModel.limit!.png! - self.viewModel.countPng!) < 1 {
+                let alert = UIAlertController(title: "Can't upload!", message: "Maximum PNG limit reached", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        } else if urls.first!.pathExtension.uppercased() == "JPG" {
+            if (self.viewModel.limit!.jpg! - self.viewModel.countJpg!) < 1 {
+                let alert = UIAlertController(title: "Can't upload!", message: "Maximum JPG limit reached", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        } else if urls.first!.pathExtension.uppercased() == "HEIC" {
+            if (self.viewModel.limit!.heic! - self.viewModel.countHeic!) < 1 {
+                let alert = UIAlertController(title: "Can't upload!", message: "Maximum HEIC limit reached", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        }
+        
         var resizedImage = image
         print("\(Double(resizedImage.pngData()!.count)) Bytes")
         while resizedImage.pngData()!.count > 1_000_000 {
