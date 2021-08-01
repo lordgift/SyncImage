@@ -12,6 +12,15 @@ class GalleryViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var pngAvailableLabel: UILabel!
+    @IBOutlet var pngLimitLabel: UILabel!
+    @IBOutlet var jpgAvailableLabel: UILabel!
+    @IBOutlet var jpgLimitLabel: UILabel!
+    @IBOutlet var heicAvailableLabel: UILabel!
+    @IBOutlet var heicLimitLabel: UILabel!
+    
+    
+    
     lazy var viewModel: GalleryVM = {
         return GalleryVM()
     }()
@@ -41,6 +50,8 @@ class GalleryViewController: UIViewController {
         }
     }
     
+    @IBAction func handleTapOfflineLimitSetting(_ sender: UIButton) {
+    }
 }
 
 extension GalleryViewController: UIDocumentPickerDelegate {
