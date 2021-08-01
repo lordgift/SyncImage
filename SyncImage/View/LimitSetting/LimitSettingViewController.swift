@@ -12,9 +12,15 @@ class LimitSettingViewController: UIViewController {
     @IBOutlet var jpgLimitTextField: UITextField!
     @IBOutlet var heicLimitTextField: UITextField!
     
-    private var onSave:((Int,Int,Int)->Void)?
     
-    func setupOnSave(onSave:@escaping ((Int,Int,Int)->Void)) {
+    lazy var viewModel: LimitSettingVM = {
+        return LimitSettingVM()
+    }()
+    
+    
+    private var onSave:((Limit)->Void)?
+    
+    func setupOnSave(onSave:@escaping ((Limit)->Void)) {
         self.onSave = onSave
     }
     
@@ -25,15 +31,13 @@ class LimitSettingViewController: UIViewController {
     }
     
     @IBAction func handleTapSave(_ sender: Any) {
+        let limit = Limit()
+        limit.png = Int(self.pngLimitTextField.text ?? "0") ?? 0
+        limit.jpg = Int(self.jpgLimitTextField.text ?? "0") ?? 0
+        limit.heic = Int(self.heicLimitTextField.text ?? "0") ?? 0
         
-        let pngLimit = Int(self.pngLimitTextField.text ?? "0") ?? 0
-        let jpgLimit = Int(self.jpgLimitTextField.text ?? "0") ?? 0
-        let heicLimit = Int(self.heicLimitTextField.text ?? "0") ?? 0
-        
-        l
-        
-        
-        onSave?(pngLimit, jpgLimit, heicLimit)
+        viewModel.setLimit(limit: limit)
+        onSave?(limit)
         self.navigationController?.popViewController(animated: true)
     }
 }

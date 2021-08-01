@@ -30,6 +30,14 @@ class GalleryViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let limit = self.viewModel.getLimit()
+        
+        self.pngLimitLabel.text = limit == nil ? "??" : String(limit!.png!)
+        self.jpgLimitLabel.text = limit == nil ? "??" : String(limit!.jpg!)
+        self.heicLimitLabel.text = limit == nil ? "??" : String(limit!.heic!)
+    }
+    
     @IBAction func handleTapQR(_ sender: UIBarButtonItem) {
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.png,.jpeg, .heic], asCopy: true)
         documentPicker.delegate = self
@@ -55,10 +63,10 @@ class GalleryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "settingLimitSegue" {
             if let vc = segue.destination as? LimitSettingViewController {
-                vc.setupOnSave { pngLimit, jpgLimit, heicLimit in
-                    self.pngLimitLabel.text = String(pngLimit)
-                    self.jpgLimitLabel.text = String(jpgLimit)
-                    self.heicLimitLabel.text = String(heicLimit)
+                vc.setupOnSave { limit in
+                    self.pngLimitLabel.text = String(limit.png!)
+                    self.jpgLimitLabel.text = String(limit.jpg!)
+                    self.heicLimitLabel.text = String(limit.heic!)
                 }
             }
         }

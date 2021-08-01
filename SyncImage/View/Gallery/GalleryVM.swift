@@ -10,8 +10,8 @@ import UIKit
 
 class GalleryVM {
     
-    var local = Local()
-    var remote = Remote()
+    private var local = Local()
+    private var remote = Remote()
     
     func countPicData() -> Int {
         return local.getAllPicData()?.count ?? 0
@@ -41,6 +41,9 @@ class GalleryVM {
                 onComplete()
             }
         }
-        
+    }
+    
+    func getLimit() -> Limit? {
+        return local.getLimit()
     }
 }

@@ -12,7 +12,7 @@ class Local {
     var realm:Realm?
     
     init() {
-        let realmConfig = Realm.Configuration(schemaVersion: 2)
+        let realmConfig = Realm.Configuration(schemaVersion: 3)
         realm = try! Realm(configuration: realmConfig)
     }
     
@@ -54,12 +54,16 @@ class Local {
     
     func setLimit(limit: Limit) {
         let modifyingLimit = realm?.objects(Limit.self).first
-        try! self.realm?.write {
-            modifyingLimit?.png = limit.png
-            modifyingLimit?.jpg = limit.jpg
-            modifyingLimit?.heic = limit.heic
-        }
         
+        try! self.realm?.write {
+            if modifyingLimit != nil {
+                modifyingLimit?.png = limit.png
+                modifyingLimit?.jpg = limit.jpg
+                modifyingLimit?.heic = limit.heic
+            } else {
+                self.realm?.add(limit)
+            }
+        }
     }
     
 }

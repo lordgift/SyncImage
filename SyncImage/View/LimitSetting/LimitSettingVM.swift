@@ -8,9 +8,9 @@
 import Foundation
 
 class LimitSettingVM {
-    var local = Local()
+    private var local = Local()
     
-    func setLimit(limit: Limit) -> Limit? {
+    func setLimit(limit: Limit) {
         local.setLimit(limit: limit)
     }
     
